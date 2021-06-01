@@ -23,6 +23,18 @@
       "day": "May 8th",
       "reminder": true,
       "id": 4
+    },
+    {
+      "text": "test",
+      "day": "2021.04.24",
+      "reminder": false,
+      "id": 5
+    },
+    {
+      "text": "Test a new test",
+      "day": "2021.05.27",
+      "reminder": true,
+      "id": 6
     }
   ]
 }

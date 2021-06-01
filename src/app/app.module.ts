@@ -14,6 +14,8 @@ import { AddTaskComponent } from './components/add-task/add-task.component';
 import { AboutComponent } from './components/about/about.component';
 import { FooterComponent } from './components/footer/footer.component';
 
+import { AngularMyDatePickerModule } from 'angular-mydatepicker';
+
 
 const appRoutes: Routes = [
   { path: '', component: TasksComponent },
@@ -36,6 +38,7 @@ const appRoutes: Routes = [
     FontAwesomeModule,
     HttpClientModule,
     FormsModule,
+    AngularMyDatePickerModule,
     RouterModule.forRoot(appRoutes, { enableTracing: true })
   ],
   providers: [],
