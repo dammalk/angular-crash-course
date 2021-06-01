@@ -11,10 +11,10 @@
         placeholder="Click to select a date" 
         angular-mydatepicker 
         name="day" 
-        (click)="dp.toggleCalendar()" 
+        (click)="datePicker.toggleCalendar()" 
         [(ngModel)]="selectedDate" 
         [options]="myDpOptions" 
-        #dp="angular-mydatepicker" 
+        #datePicker="angular-mydatepicker" 
         (dateChanged)="onDateChanged($event)"
         autocomplete="off"
       />

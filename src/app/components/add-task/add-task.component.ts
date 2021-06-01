@@ -3,9 +3,9 @@ import { UiService } from '../../services/ui.service';
 import { Subscription } from 'rxjs';
 import { Task } from '../../Task';
 
-import {IAngularMyDpOptions, IMyDateModel} from 'angular-mydatepicker';
-
-
+import { IAngularMyDpOptions, IMyDateModel } from 'angular-mydatepicker';
+import { AngularMyDatePickerDirective } from 'angular-mydatepicker';
+import { ViewChild } from '@angular/core'
 
 @Component({
   selector: 'app-add-task',
@@ -14,16 +14,16 @@ import {IAngularMyDpOptions, IMyDateModel} from 'angular-mydatepicker';
 })
 export class AddTaskComponent implements OnInit {
 
+  @ViewChild('datePicker') datePicker!: AngularMyDatePickerDirective;
   myDpOptions: IAngularMyDpOptions = {
     dateRange: false,
     dateFormat: 'yyyy.mm.dd'
   };
+  selectedDate!: IMyDateModel;
   
   @Output() onAddTask: EventEmitter<Task> = new EventEmitter();
   text!: string;
-  day!: string;
   reminder: boolean = false;
-  selectedDate!: IMyDateModel;
 
   showAddTask!: boolean;
   subscription!: Subscription;
@@ -45,20 +45,17 @@ export class AddTaskComponent implements OnInit {
 
     const newTask = {
       text: this.text,
-      day: this.day,
+      day: !this.selectedDate ? '' : this.selectedDate.singleDate?.formatted as string,
       reminder: this.reminder
     }
 
     this.onAddTask.emit(newTask);
     
     this.text = '';
-    this.day = '';
     this.reminder = false;   
-
+    this.datePicker.clearDate();
   }
 
   onDateChanged(event: IMyDateModel): void {
-    this.selectedDate = event;
-    this.day = this.selectedDate.singleDate?.formatted as string;
   }
 }
