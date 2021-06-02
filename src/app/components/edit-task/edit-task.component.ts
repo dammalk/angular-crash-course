@@ -20,7 +20,7 @@ export class EditTaskComponent implements OnInit {
   };
   selectedDate!: IMyDateModel;
   
-  @Output() onEditTask: EventEmitter<Task> = new EventEmitter();
+  @Output() onSaveEditTask: EventEmitter<Task> = new EventEmitter();
   @Input() task!: Task;
   text!: string;
   reminder: boolean = false;
@@ -31,11 +31,23 @@ export class EditTaskComponent implements OnInit {
     this.text = this.task.text;
     this.reminder = this.task.reminder;
     this.selectedDate = this.dateService.convertFromStringToIMyDateModel(this.task.day);
-    console.log(this.selectedDate);
   }
 
   onSubmit() {
-    
+    if (!this.text){
+      alert('Task name can\'t be empty!');
+      return;
+    }
+    if (!this.selectedDate){
+      alert('Please select a date!');
+      return;
+    }
+
+    this.task.text = this.text;
+    this.task.reminder = this.reminder;
+    this.task.day = !this.selectedDate ? '' : this.selectedDate.singleDate?.formatted as string;
+
+    this.onSaveEditTask.emit(this.task);
   }
 
   onDateChanged(event: IMyDateModel): void {

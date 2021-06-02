@@ -21,7 +21,8 @@ export class DateService {
           year: year,
           month: month,
           day: day
-        }
+        },
+        formatted: input
       }
     };
   }

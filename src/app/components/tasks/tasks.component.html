@@ -9,6 +9,7 @@
   <app-edit-task 
     *ngIf="showEditTask && showEditTaskId === task.id"
     [task]="task"
+    (onSaveEditTask)="updateTask(task)"
   ></app-edit-task>
 </div>
 
