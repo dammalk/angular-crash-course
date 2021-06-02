@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { DateService } from '../../services/date.service';
 import { Task } from '../../Task';
 
 import { IAngularMyDpOptions, IMyDateModel } from 'angular-mydatepicker';
@@ -24,12 +25,13 @@ export class EditTaskComponent implements OnInit {
   text!: string;
   reminder: boolean = false;
   
-  constructor() { }
+  constructor(private dateService: DateService) { }
 
   ngOnInit(): void {
     this.text = this.task.text;
     this.reminder = this.task.reminder;
-    // TO DO: bind date
+    this.selectedDate = this.dateService.convertFromStringToIMyDateModel(this.task.day);
+    console.log(this.selectedDate);
   }
 
   onSubmit() {
