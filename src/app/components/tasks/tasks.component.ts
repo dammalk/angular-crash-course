@@ -20,9 +20,13 @@ export class TasksComponent implements OnInit {
     this.taskService.getTasks().subscribe((tasks) => (this.tasks = tasks));
   }
 
-  showEdit(task: Task) {
-    this.showEditTask = true;
-    this.showEditTaskId = task.id as number;
+  showEdit(task: Task): void {
+    if(this.showEditTask && this.showEditTaskId === task.id) {
+      this.showEditTask = false;
+    } else {
+      this.showEditTask = true;
+      this.showEditTaskId = task.id as number;
+    }    
   }
 
   deleteTask(task: Task) {
@@ -42,7 +46,7 @@ export class TasksComponent implements OnInit {
     this.taskService.updateTaskReminder(task).subscribe();
   }
 
-  addTask(task: Task){
+  addTask(task: Task) {
     this.taskService.addTask(task).subscribe((task) => (this.tasks.push(task)));
   }
 

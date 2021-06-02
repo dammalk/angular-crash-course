@@ -1,29 +1,28 @@
 <form class="edit-form" (ngSubmit)="onSubmit()">
-    <div class="form-control">
-      <label for="text">Task</label>
-      <input type="text" name="text" [(ngModel)]="text" id="text" placeholder="Enter task name">
+  <div class="form-control">
+    <label for="text">Task</label>
+    <input type="text" name="text" [(ngModel)]="text" id="text" placeholder="Enter task name">
+  </div>
+  <div class="form-control">
+    <label for="day">Day & Time</label>
+    <div class="input-box-container">      
+      <input 
+        placeholder="Click to select a date" 
+        angular-mydatepicker 
+        name="day" 
+        (click)="datePicker.toggleCalendar()" 
+        [(ngModel)]="selectedDate" 
+        [options]="myDpOptions" 
+        #datePicker="angular-mydatepicker" 
+        (dateChanged)="onDateChanged($event)"
+        autocomplete="off"
+      />
     </div>
-
-    <div class="form-control">
-      <label for="day">Day & Time</label>
-      <div class="input-box-container">      
-        <input 
-          placeholder="Click to select a date" 
-          angular-mydatepicker 
-          name="day" 
-          (click)="datePicker.toggleCalendar()" 
-          [(ngModel)]="selectedDate" 
-          [options]="myDpOptions" 
-          #datePicker="angular-mydatepicker" 
-          (dateChanged)="onDateChanged($event)"
-          autocomplete="off"
-        />
-      </div>
-    </div>
-    
-    <div class="form-control form-control-check">
-      <label for="reminder">Set Reminder</label>
-      <input type="checkbox" name="reminder" [(ngModel)]="reminder" id="reminder">
-    </div>
-    <input type="submit" value="Save Task" class="btn btn-block">
-  </form>
+  </div>
+  
+  <div class="form-control form-control-check">
+    <label for="reminder">Set Reminder</label>
+    <input type="checkbox" name="reminder" [(ngModel)]="reminder" id="reminder">
+  </div>
+  <input type="submit" value="Save Task" class="btn btn-block">
+</form>
