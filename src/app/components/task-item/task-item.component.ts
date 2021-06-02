@@ -11,14 +11,21 @@ import { faPen } from '@fortawesome/free-solid-svg-icons';
 export class TaskItemComponent implements OnInit {
 
   @Input() task!: Task;
+  @Output() onEditTask: EventEmitter<Task> = new EventEmitter();
   @Output() onDeleteTask: EventEmitter<Task> = new EventEmitter();
   @Output() onToggleReminder: EventEmitter<Task> = new EventEmitter();
   faTimes = faTimes;
   faPen = faPen;
+
+
   
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onEdit(task: Task) {
+    this.onEditTask.emit(task);
   }
 
   onDelete(task: Task) {

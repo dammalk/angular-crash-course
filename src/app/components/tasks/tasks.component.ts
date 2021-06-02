@@ -10,6 +10,9 @@ import { Task } from '../../Task';
 export class TasksComponent implements OnInit {
 
   tasks: Task[] = [];
+
+  showEditTask: boolean = false;
+  showEditTaskId: number = 0;
   
   constructor(private taskService: TaskService) { }
 
@@ -17,11 +20,16 @@ export class TasksComponent implements OnInit {
     this.taskService.getTasks().subscribe((tasks) => (this.tasks = tasks));
   }
 
+  showEdit(task: Task) {
+    this.showEditTask = true;
+    this.showEditTaskId = task.id as number;
+  }
+
   deleteTask(task: Task) {
     if(!confirm(`Are you sure you want to delete task "${task.text}"?`)) {
       return;
     }
-    
+
     this.taskService
       .deleteTask(task)
       .subscribe(

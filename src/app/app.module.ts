@@ -15,6 +15,7 @@ import { AboutComponent } from './components/about/about.component';
 import { FooterComponent } from './components/footer/footer.component';
 
 import { AngularMyDatePickerModule } from 'angular-mydatepicker';
+import { EditTaskComponent } from './components/edit-task/edit-task.component';
 
 
 const appRoutes: Routes = [
@@ -31,7 +32,8 @@ const appRoutes: Routes = [
     TaskItemComponent,
     AddTaskComponent,
     AboutComponent,
-    FooterComponent
+    FooterComponent,
+    EditTaskComponent
   ],
   imports: [
     BrowserModule,
