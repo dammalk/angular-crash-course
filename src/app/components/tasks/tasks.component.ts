@@ -18,6 +18,10 @@ export class TasksComponent implements OnInit {
   }
 
   deleteTask(task: Task) {
+    if(!confirm(`Are you sure you want to delete task "${task.text}"?`)) {
+      return;
+    }
+    
     this.taskService
       .deleteTask(task)
       .subscribe(
