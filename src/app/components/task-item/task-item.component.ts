@@ -17,7 +17,7 @@ export class TaskItemComponent implements OnInit {
   faTimes = faTimes;
   faPen = faPen;
 
-
+  showIcons: boolean = false;
   
   constructor() { }
 
@@ -36,4 +36,11 @@ export class TaskItemComponent implements OnInit {
     this.onToggleReminder.emit(task);
   }
 
+  onMouseEnter(): void {
+    this.showIcons = true;
+  }
+
+  onMouseLeave(): void {
+    this.showIcons = false;
+  }
 }

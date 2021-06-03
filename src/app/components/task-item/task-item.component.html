@@ -2,10 +2,12 @@
     [ngClass]="{ reminder: task.reminder }" 
     class="task" 
     (dblclick)="onToggle(task)"
+    (mouseenter)="onMouseEnter()"
+    (mouseleave)="onMouseLeave()"
 >
     <h3>
         {{ task.text }} 
-        <div>
+        <div *ngIf="showIcons">
           <fa-icon 
             (click)="onEdit(task)"
             [ngStyle]="{'color': 'blue'}" 
