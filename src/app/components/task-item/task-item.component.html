@@ -1,5 +1,5 @@
 <div 
-    [ngClass]="{ reminder: task.reminder }" 
+    [ngClass]=" task.reminder ? 'reminder-on' : 'reminder-off' " 
     class="task" 
     (dblclick)="onToggle(task)"
     (mouseenter)="onMouseEnter()"
