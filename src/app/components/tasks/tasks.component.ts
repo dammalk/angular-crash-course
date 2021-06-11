@@ -1,11 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../../services/task.service';
 import { Task } from '../../Task';
+import { fade, noLeaveAnimation } from "./tasks.animations";
 
 @Component({
   selector: 'app-tasks',
   templateUrl: './tasks.component.html',
-  styleUrls: ['./tasks.component.css']
+  styleUrls: ['./tasks.component.css'],
+  animations: [
+    fade,
+    noLeaveAnimation
+  ]
 })
 export class TasksComponent implements OnInit {
 
@@ -13,11 +18,12 @@ export class TasksComponent implements OnInit {
 
   showEditTask: boolean = false;
   showEditTaskId: number = 0;
+  disableAnimations: boolean = true;
   
   constructor(private taskService: TaskService) { }
 
   ngOnInit(): void {
-    this.taskService.getTasks().subscribe((tasks) => (this.tasks = tasks));
+    this.taskService.getTasks().subscribe((tasks) => (this.tasks = tasks)); 
   }
 
   showEdit(task: Task): void {
@@ -34,6 +40,8 @@ export class TasksComponent implements OnInit {
       return;
     }
 
+    this.enableAnimations();
+
     this.taskService
       .deleteTask(task)
       .subscribe(
@@ -47,10 +55,17 @@ export class TasksComponent implements OnInit {
   }
 
   addTask(task: Task) {
+    this.enableAnimations();
     this.taskService.addTask(task).subscribe((task) => (this.tasks.push(task)));
   }
 
   updateTask(task: Task) {
     this.taskService.updateTask(task).subscribe(() => (this.showEditTask = false));
+  }
+
+  enableAnimations(): void {
+    if (this.disableAnimations === true) {
+      this.disableAnimations = false;
+    }
   }
 }
