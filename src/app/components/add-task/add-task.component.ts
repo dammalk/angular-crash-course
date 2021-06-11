@@ -2,6 +2,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { UiService } from '../../services/ui.service';
 import { Subscription } from 'rxjs';
 import { Task } from '../../Task';
+import { animate, style, group, query, transition, trigger } from '@angular/animations'
+
 
 import { IAngularMyDpOptions, IMyDateModel } from 'angular-mydatepicker';
 import { AngularMyDatePickerDirective } from 'angular-mydatepicker';
@@ -10,7 +12,20 @@ import { ViewChild } from '@angular/core'
 @Component({
   selector: 'app-add-task',
   templateUrl: './add-task.component.html',
-  styleUrls: ['./add-task.component.css']
+  styleUrls: ['./add-task.component.css'],
+  animations: [
+    trigger('addFormAnimation', [
+      transition(':enter', [
+        style({ height: '0px', overflow: 'hidden', marginTop: '-20px' }),
+        animate('250ms ease-out', style({ height: '!' }))        
+      ]),
+    
+      transition(':leave', [
+        style({ height: '!', overflow: 'hidden', marginTop: '-20px' }),
+        animate('250ms ease-out', style({ height: '0px' }))           
+      ])
+    ])
+  ]
 })
 export class AddTaskComponent implements OnInit {
 
