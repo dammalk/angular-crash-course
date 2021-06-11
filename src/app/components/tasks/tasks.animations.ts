@@ -3,9 +3,9 @@ import { animate, style, group, query, transition, trigger } from '@angular/anim
 export const fade = trigger('fade', [      
     
   transition(':enter', [
-    style({ opacity: 0 }),
+    style({ opacity: 0, transform: 'translateX(-10px)' }),
     group([
-      animate('500ms ease-out', style({ opacity: 1 })),
+      animate('500ms ease-out', style({ opacity: 1, transform: 'translateX(0)' })),
       
       query('.task', [
         style({ backgroundColor: 'green' }),
@@ -15,9 +15,9 @@ export const fade = trigger('fade', [
   ]) ,   
 
   transition(':leave', [
-    style({ opacity: 1 }),
+    style({ opacity: 1, transform: 'translateX(0px)' }),
     group([
-      animate('500ms ease-out', style({ opacity: 0 })),
+      animate('500ms ease-out', style({ opacity: 0, transform: 'translateX(-10px)' })),
       
       query('.task', [
         style({ backgroundColor: 'red', borderLeft: 0 })
