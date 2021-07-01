@@ -1,0 +1,9 @@
+.edit-form {
+  margin: -5px 5px 0px;
+  background: #f4f4f4;
+  padding: 10px 20px;
+}
+
+.input-box-container {
+  position: relative;
+}

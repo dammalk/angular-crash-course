@@ -1,15 +1,25 @@
 <div 
-    [ngClass]="{ reminder: task.reminder }" 
+    [ngClass]=" task.reminder ? 'reminder-on' : 'reminder-off' " 
     class="task" 
     (dblclick)="onToggle(task)"
+    (mouseenter)="onMouseEnter()"
+    (mouseleave)="onMouseLeave()"
 >
     <h3>
         {{ task.text }} 
-        <fa-icon 
+        <div *ngIf="showIcons">
+          <fa-icon 
+            (click)="onEdit(task)"
+            [ngStyle]="{'color': 'blue'}" 
+            [icon]="faPen"
+          ></fa-icon>
+          <fa-icon 
             (click)="onDelete(task)" 
             [ngStyle]="{'color': 'red'}" 
             [icon]="faTimes"
-        ></fa-icon>
+          ></fa-icon>
+        </div>
     </h3>
     <p>{{ task.day }}</p>
 </div>
+

@@ -3,26 +3,44 @@
     {
       "id": 1,
       "text": "Doctors Appointment",
-      "day": "May 5th at 2:30pm",
+      "day": "2021.07.25",
       "reminder": true
     },
     {
       "id": 2,
       "text": "Meeting at School",
-      "day": "May 6th at 2:30pm",
-      "reminder": true
+      "day": "2021.07.06",
+      "reminder": false
     },
     {
       "id": 3,
       "text": "Food Shopping",
-      "day": "May 7th at 12:30pm",
+      "day": "2021.09.07",
       "reminder": false
     },
     {
       "text": "Test task",
-      "day": "May 8th",
+      "day": "2021.05.08",
       "reminder": true,
       "id": 4
+    },
+    {
+      "text": "Test a new test",
+      "day": "2021.06.27",
+      "reminder": true,
+      "id": 6
+    },
+    {
+      "text": "Meeting at School 2",
+      "day": "2021.07.23",
+      "reminder": true,
+      "id": 7
+    },
+    {
+      "text": "Urgent task",
+      "day": "2021.07.01",
+      "reminder": true,
+      "id": 8
     }
   ]
 }

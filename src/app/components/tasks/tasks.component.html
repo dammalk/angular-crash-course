@@ -1,7 +1,21 @@
 <app-add-task (onAddTask)="addTask($event)"></app-add-task>
-<app-task-item 
-    *ngFor="let task of tasks" 
-    [task]="task" 
-    (onDeleteTask)="deleteTask(task)"
-    (onToggleReminder)="toggleReminder(task)"
-></app-task-item>
+<div 
+  [@.disabled]="disableAnimations"
+  @noLeaveAnimation
+>
+  <div @fade *ngFor="let task of tasks" >
+    <app-task-item     
+      [task]="task" 
+      (onEditTask)="showEdit(task)"
+      (onDeleteTask)="deleteTask(task)"
+      (onToggleReminder)="toggleReminder(task)"
+    ></app-task-item>
+    <app-edit-task 
+      *ngIf="showEditTask && showEditTaskId === task.id"
+      [task]="task"
+      (onSaveEditTask)="updateTask(task)"
+    ></app-edit-task>
+  </div>
+</div>
+
+
