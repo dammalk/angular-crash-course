@@ -35,4 +35,17 @@ export class TaskService {
   addTask(task: Task): Observable<Task> {
     return this.http.post<Task>(this.apiUrl, task, httpOptions);
   }
+
+  sortTasks(tasks: Task[]): Task[] {
+    tasks.sort((a, b) => {
+      if ( a.day < b.day ){
+        return -1;
+      }
+      if ( a.day > b.day ){
+        return 1;
+      }
+      return 0;
+    })
+    return tasks;
+  }
 }

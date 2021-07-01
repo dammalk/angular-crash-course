@@ -23,21 +23,10 @@ export class TasksComponent implements OnInit {
   constructor(private taskService: TaskService) { }
 
   ngOnInit(): void {
-    this.taskService.getTasks().subscribe((tasks) => (this.tasks = this.sortTasks(tasks)));
+    this.taskService.getTasks().subscribe((tasks) => (this.tasks = this.taskService.sortTasks(tasks)));
   }
 
-  sortTasks(tasks: Task[]): Task[] {
-    tasks.sort((a, b) => {
-      if ( a.day < b.day ){
-        return -1;
-      }
-      if ( a.day > b.day ){
-        return 1;
-      }
-      return 0;
-    })
-    return tasks;
-  }
+  
 
   showEdit(task: Task): void {
     if(this.showEditTask && this.showEditTaskId === task.id) {
@@ -71,7 +60,7 @@ export class TasksComponent implements OnInit {
     this.enableAnimations();
     this.taskService.addTask(task).subscribe((task) => {
       this.tasks.push(task)
-      this.tasks = this.sortTasks(this.tasks);
+      this.tasks = this.taskService.sortTasks(this.tasks);
     });
     
   }
