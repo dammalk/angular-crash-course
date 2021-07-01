@@ -23,7 +23,7 @@ export class TasksComponent implements OnInit {
   constructor(private taskService: TaskService) { }
 
   ngOnInit(): void {
-    this.taskService.getTasks().subscribe((tasks) => (this.tasks = this.taskService.sortTasks(tasks)));
+    this.taskService.getTasks().subscribe((tasks) => (this.tasks = this.taskService.sortTasksByDate(tasks)));
   }
 
   
@@ -60,7 +60,7 @@ export class TasksComponent implements OnInit {
     this.enableAnimations();
     this.taskService.addTask(task).subscribe((task) => {
       this.tasks.push(task)
-      this.tasks = this.taskService.sortTasks(this.tasks);
+      this.tasks = this.taskService.sortTasksByDate(this.tasks);
     });
     
   }

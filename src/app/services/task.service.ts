@@ -36,7 +36,7 @@ export class TaskService {
     return this.http.post<Task>(this.apiUrl, task, httpOptions);
   }
 
-  sortTasks(tasks: Task[]): Task[] {
+  sortTasksByDate(tasks: Task[]): Task[] {
     tasks.sort((a, b) => {
       if ( a.day < b.day ){
         return -1;
