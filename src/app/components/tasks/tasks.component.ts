@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DateService } from 'src/app/services/date.service';
 import { TaskService } from '../../services/task.service';
 import { Task } from '../../Task';
 import { fade, noLeaveAnimation } from "./tasks.animations";
@@ -15,15 +16,19 @@ import { fade, noLeaveAnimation } from "./tasks.animations";
 export class TasksComponent implements OnInit {
 
   tasks: Task[] = [];
-
+  currentDate: string = '';
   showEditTask: boolean = false;
   showEditTaskId: number = 0;
   disableAnimations: boolean = true;
   
-  constructor(private taskService: TaskService) { }
+  constructor(private taskService: TaskService, private dateService: DateService) { }
 
   ngOnInit(): void {
-    this.taskService.getTasks().subscribe((tasks) => (this.tasks = this.taskService.sortTasksByDate(tasks)));
+    this.currentDate = this.dateService.getCurrentDateFormatted();
+
+    this.taskService.getTasks().subscribe((tasks) => {
+      this.tasks = this.taskService.sortTasksByDate(tasks.filter(t => t.day >= this.currentDate));
+    });    
   }
 
   

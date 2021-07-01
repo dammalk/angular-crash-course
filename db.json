@@ -3,19 +3,19 @@
     {
       "id": 1,
       "text": "Doctors Appointment",
-      "day": "2021.05.05",
+      "day": "2021.07.25",
       "reminder": true
     },
     {
       "id": 2,
       "text": "Meeting at School",
-      "day": "2021.05.06",
+      "day": "2021.07.06",
       "reminder": false
     },
     {
       "id": 3,
       "text": "Food Shopping",
-      "day": "2021.05.07",
+      "day": "2021.09.07",
       "reminder": false
     },
     {
@@ -25,16 +25,22 @@
       "id": 4
     },
     {
-      "text": "test",
-      "day": "2021.04.24",
-      "reminder": false,
-      "id": 5
-    },
-    {
       "text": "Test a new test",
-      "day": "2021.05.27",
+      "day": "2021.06.27",
       "reminder": true,
       "id": 6
+    },
+    {
+      "text": "Meeting at School 2",
+      "day": "2021.07.23",
+      "reminder": true,
+      "id": 7
+    },
+    {
+      "text": "Urgent task",
+      "day": "2021.07.01",
+      "reminder": true,
+      "id": 8
     }
   ]
 }

@@ -26,4 +26,13 @@ export class DateService {
       }
     };
   }
+
+  getCurrentDateFormatted(): string {
+    const today: Date = new Date();
+    const yyyy: string = String(today.getFullYear());
+    const mm: string = String(today.getMonth() + 1).padStart(2, '0');
+    const dd: string = String(today.getDate()).padStart(2, '0');
+
+    return `${yyyy}.${mm}.${dd}`;
+  }
 }
