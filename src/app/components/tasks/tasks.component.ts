@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DateService } from 'src/app/services/date.service';
+import { DateService } from '../../services/date.service';
 import { TaskService } from '../../services/task.service';
 import { Task } from '../../Task';
 import { fade, noLeaveAnimation } from "./tasks.animations";
