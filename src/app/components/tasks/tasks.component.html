@@ -16,6 +16,7 @@
       (onSaveEditTask)="updateTask(task)"
     ></app-edit-task>
   </div>
+  <div *ngIf="tasks.length == 0"><p>No tasks to show</p></div>
 </div>
 
 
